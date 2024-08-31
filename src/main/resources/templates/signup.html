@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>User Sign Up</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+	<div class="container-fluid mt-5">
+		<h2 class="text-center">User Sign Up</h2>
+		<form th:action="@{/save}" th:object="${user}" method="post" enctype="multipart/form-data">
+			<div class="row mb-3">
+				<div class="col-md-6">
+					<label for="firstName" class="form-label">First Name</label>
+					<input type="text" th:field="*{firstName}" class="form-control" id="firstName"
+						placeholder="Enter your first name">
+					<p th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" class="text-danger"></p>
+				</div>
+				<div class="col-md-6">
+					<label for="lastName" class="form-label">Last Name</label>
+					<input type="text" th:field="*{lastName}" class="form-control" id="lastName"
+						placeholder="Enter your last name">
+					<p th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" class="text-danger"></p>
+				</div>
+			</div>
+			<div class="row mb-3">
+				<div class="col-md-6">
+					<label for="gender" class="form-label">Gender</label>
+					<select th:field="*{gender}" class="form-select" id="gender">
+						<option value="">Select your gender</option>
+						<option value="Male">Male</option>
+						<option value="Female">Female</option>
+						<option value="Other">Other</option>
+					</select>
+					<p th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}" class="text-danger"></p>
+				</div>
+				<div class="col-md-6">
+					<label for="email" class="form-label">Email</label>
+					<input type="email" th:field="*{email}" class="form-control" id="email"
+						placeholder="Enter your email">
+					<p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="text-danger"></p>
+				</div>
+				<div class="col-md-6">
+					<label for="phoneNumber" class="form-label">Phone Number</label>
+					<input type="text" th:field="*{phoneNumber}" class="form-control" id="phoneNumber"
+						placeholder="Enter your phone number">
+					<p th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}" class="text-danger"></p>
+				</div>
+				<div class="col-md-6">
+					<label for="qualification" class="form-label">Qualification</label>
+					<input type="text" th:field="*{qualification}" class="form-control" id="qualification"
+						placeholder="Enter your qualification">
+					<p th:if="${#fields.hasErrors('qualification')}" th:errors="*{qualification}" class="text-danger">
+					</p>
+				</div>
+				<div class="col-md-6">
+					<label for="address" class="form-label">Address</label>
+					<textarea th:field="*{address}" class="form-control" id="address" rows="3"
+						placeholder="Enter your address"></textarea>
+					<p th:if="${#fields.hasErrors('address')}" th:errors="*{address}" class="text-danger"></p>
+				</div>
+				<div class="col-md-6">
+					<label for="jobRole" class="form-label">Job Role</label>
+					<input type="text" th:field="*{jobRole}" class="form-control" id="jobRole"
+						placeholder="Enter your desired job role">
+					<p th:if="${#fields.hasErrors('jobRole')}" th:errors="*{jobRole}" class="text-danger"></p>
+				</div>
+			</div>
+			<div class="row mb-3">
+				<div class="col-md-12">
+					<label for="resume" class="form-label">Resume (PDF only)</label>
+					<input type="file" th:field="*{resume}" class="form-control" id="resume" />
+				</div>
+			</div>
+			<div class="d-grid">
+				<button type="submit" class="btn btn-primary">Submit</button>
+			</div>
+		</form>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
